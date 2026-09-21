@@ -100,24 +100,6 @@ p{margin:0 0 16px}
 }
 .vid-note b{color:var(--fg)}
 
-/* ---------- filmstrip ---------- */
-.strip{
-  display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
-  margin:28px 0 0;
-}
-.strip figure{margin:0}
-.strip img{
-  width:100%; height:auto; display:block; border-radius:6px;
-  border:1px solid var(--rule); background:var(--bg-alt);
-}
-.strip figcaption{
-  margin:9px 0 0; font-size:.84rem; line-height:1.5; color:var(--fg-muted);
-}
-.strip .n{
-  font-family:var(--mono); font-size:.76rem; color:var(--accent);
-  background:var(--accent-soft); padding:1px 6px; border-radius:4px; margin-right:6px;
-}
-
 /* ---------- figure ---------- */
 figure.plan{margin:26px 0 0; text-align:center}
 figure.plan svg{width:100%; max-width:560px; height:auto}
@@ -176,30 +158,35 @@ footer a{color:var(--fg-muted)}
   </div>
 </header>
 
-<section id="rollout">
+<section id="full">
   <div class="wrap">
-    <h2>One Attempt, Start to Finish</h2>
-    <p class="lead">The clip below is a single autonomous attempt, played at twice speed. Nothing
-    about the line is told to the policy — not where it is, not how long it is. The only input is
-    what the three cameras see and the arm's own joint state, and the only instruction is the same
-    five-word string used during training.</p>
+    <h2>Five Attempts, Uncut</h2>
+    <p class="lead">The take below is the raw recording: <b>2&nbsp;min 59&nbsp;s, one continuous
+    shot, five attempts in a row, nothing edited out</b> — no cuts, no speed-up, no re-takes
+    dropped. Between attempts a person leans in to draw the next line, which is why the camera is
+    briefly blocked at 0:26, 1:01, 1:39 and 2:12. Everything in between is the policy running on
+    its own.</p>
 
     <div class="vid">
       <div class="vid-head">
-        <span class="vid-tag">ROLLOUT</span>
-        <span class="vid-title">Pick up eraser &rarr; wipe &rarr; put it back</span>
-        <span class="vid-field">pi05_wipe_line</span>
+        <span class="vid-tag">FULL TAKE</span>
+        <span class="vid-title">Five consecutive erases, real time</span>
+        <span class="vid-field">2:59 &middot; 1080p</span>
       </div>
-      <video controls autoplay muted loop playsinline preload="metadata"
-             poster="media/wipe-line-loop-poster.jpg">
-        <source src="media/wipe-line-loop.mp4" type="video/mp4">
+      <video controls playsinline preload="none" poster="media/wipe-line-poster.jpg">
+        <source src="media/wipe-line.mp4" type="video/mp4">
         Your browser does not support the video tag.
-        <a href="media/wipe-line-loop.mp4">Download the video</a>.
+        <a href="media/wipe-line.mp4">Download the video</a>.
       </video>
-      <p class="vid-note">The <b>right follower arm</b> does the whole sequence; the left arm holds
-      its pose. 11&nbsp;s at 2&times; speed, no audio. The full-length take further down runs at
-      real speed.</p>
+      <p class="vid-note">11&nbsp;MB; it starts loading only when you press play. Audio is room
+      tone and carries nothing.</p>
     </div>
+
+    <p class="vid-note" style="max-width:44em;margin:28px auto 0"><b>Read it for what it is.</b>
+    This is a demonstration of one task on one rig, not a benchmark: five attempts are too few to
+    quote a success rate from, and the eraser always starts on the board because the robot itself
+    put it there on the previous attempt. What the take does show is that the whole sequence runs
+    end to end, unassisted, with the mark in a different place every time.</p>
   </div>
 </section>
 
@@ -212,28 +199,6 @@ footer a{color:var(--fg-muted)}
     stroke, reach the eraser, bring it to the mark, wipe until the mark is gone and set the eraser
     back down. Every step is closed-loop from the cameras: the same instruction produces a different
     trajectory each time, because the mark is somewhere else.</p>
-
-    <div class="strip">
-      <figure>
-        <img src="media/step1.jpg" alt="The whiteboard with a freshly drawn vertical line and the eraser resting at the right.">
-        <figcaption><span class="n">1</span>A line is drawn by hand. The eraser sits where the
-        robot last left it.</figcaption>
-      </figure>
-      <figure>
-        <img src="media/step2.jpg" alt="The right arm descends and closes its gripper on the eraser.">
-        <figcaption><span class="n">2</span>The arm reaches for the eraser and grasps it.</figcaption>
-      </figure>
-      <figure>
-        <img src="media/step3.jpg" alt="The arm pressing the eraser against the board and wiping along the line.">
-        <figcaption><span class="n">3</span>It brings the eraser onto the mark and wipes, keeping
-        contact with the board.</figcaption>
-      </figure>
-      <figure>
-        <img src="media/step4.jpg" alt="The board is clean and the eraser has been set back down on it.">
-        <figcaption><span class="n">4</span>The eraser goes back on the board and the arm
-        withdraws.</figcaption>
-      </figure>
-    </div>
 
     <p class="vid-note" style="max-width:44em;margin:28px auto 0"><b>What makes it more than a
     replayed trajectory.</b> The mark moves between attempts, so a fixed script cannot solve it —
@@ -287,38 +252,6 @@ footer a{color:var(--fg-muted)}
         </tbody>
       </table>
     </div>
-  </div>
-</section>
-
-<section id="full">
-  <div class="wrap">
-    <h2>Five Attempts, Uncut</h2>
-    <p class="lead">The take below is the raw recording: <b>2&nbsp;min 59&nbsp;s, one continuous
-    shot, five attempts in a row, nothing edited out</b> — no cuts, no speed-up, no re-takes
-    dropped. Between attempts a person leans in to draw the next line, which is why the camera is
-    briefly blocked at 0:26, 1:01, 1:39 and 2:12. Everything in between is the policy running on
-    its own.</p>
-
-    <div class="vid">
-      <div class="vid-head">
-        <span class="vid-tag">FULL TAKE</span>
-        <span class="vid-title">Five consecutive erases, real time</span>
-        <span class="vid-field">2:59 &middot; 1080p</span>
-      </div>
-      <video controls playsinline preload="none" poster="media/wipe-line-poster.jpg">
-        <source src="media/wipe-line.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        <a href="media/wipe-line.mp4">Download the video</a>.
-      </video>
-      <p class="vid-note">11&nbsp;MB; it starts loading only when you press play. Audio is room
-      tone and carries nothing.</p>
-    </div>
-
-    <p class="vid-note" style="max-width:44em;margin:28px auto 0"><b>Read it for what it is.</b>
-    This is a demonstration of one task on one rig, not a benchmark: five attempts are too few to
-    quote a success rate from, and the eraser always starts on the board because the robot itself
-    put it there on the previous attempt. What the take does show is that the whole sequence runs
-    end to end, unassisted, with the mark in a different place every time.</p>
   </div>
 </section>
 
