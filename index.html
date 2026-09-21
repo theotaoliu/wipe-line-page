@@ -170,6 +170,7 @@ footer a{color:var(--fg-muted)}
       <span>π0.5 + LoRA</span>
       <span>bimanual ALOHA</span>
       <span>3 RGB cameras</span>
+      <span>90 demonstrations</span>
       <span>real hardware</span>
     </div>
   </div>
@@ -255,8 +256,8 @@ footer a{color:var(--fg-muted)}
       <div class="card">
         <h3>Fine-tuning</h3>
         <p><b>LoRA</b> on both towers — a <code>gemma_2b_lora</code> PaliGemma backbone and a
-        <code>gemma_300m_lora</code> action expert — for <b>30,000 steps</b>, with EMA off to keep
-        the run inside one GPU's memory.</p>
+        <code>gemma_300m_lora</code> action expert — for <b>30,000 steps</b> on <b>90 teleoperated
+        episodes</b>, with EMA off to keep the run inside one GPU's memory.</p>
       </div>
       <div class="card">
         <h3>What it sees</h3>
@@ -282,7 +283,7 @@ footer a{color:var(--fg-muted)}
           <tr><td>steps</td><td>30,000</td></tr>
           <tr><td>cameras</td><td><code>cam_high</code>, <code>cam_left_wrist</code>, <code>cam_right_wrist</code></td></tr>
           <tr><td>prompt</td><td><code>wipe the line</code></td></tr>
-          <tr><td>demonstrations</td><td>teleoperated on this rig, LeRobot format</td></tr>
+          <tr><td>demonstrations</td><td>90 teleoperated episodes, LeRobot format</td></tr>
         </tbody>
       </table>
     </div>
